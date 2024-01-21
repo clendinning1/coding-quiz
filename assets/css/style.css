@@ -1,0 +1,133 @@
+/* gen */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --highlight: #6600b9;
+    --lighthl: #dbcbe6;
+
+    --white: #fff;
+    --offwhite: #f9f1ff;
+
+    --lighttext: #5e5b5f;
+}
+
+::selection {
+    background: var(--highlight);
+    color: var(--white);
+}
+
+body {
+    background-color: var(--offwhite);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+
+
+
+/* header */
+
+header {   
+    /* high score link and timer */
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 30px 0px 30px;
+    font-size: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--highlight);
+}
+
+
+
+
+/* content */
+
+section {
+    /* each page's contents */
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    align-items: center;
+}
+
+/* page 0 */
+
+h1 { 
+    font-size: 60px;
+}
+
+button, #submitbtn {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+
+    font-size: 25px;
+    background-color: var(--highlight);
+    color: var(--white);
+}
+
+button:hover, #submitbtn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#start {
+    /* start button */
+    font-size: 30px;
+}
+
+/* quiz pages */
+
+h2 {
+    font-size: 40px;
+}
+
+div {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+/* final page */
+
+#textinput {
+    font-size: 27px;
+}
+
+#submitbtn {
+    padding: 6px;
+    font-size: 23px;
+}
+
+/* high score page */
+
+#scorelist {
+    padding: 0px 10px 0px 10px;
+    line-height: 0px;
+    font-size: 25px;
+    background-color: var(--lighthl);
+}
+
+#scorebtns {
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+/* footer (correct/wrong notices) */
+
+footer {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+footer p {
+    font-style: italic;
+    font-weight: light;
+    color: var(--lighttext);
+}

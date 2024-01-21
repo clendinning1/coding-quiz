@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Coding Quiz</title>
+</head>
+
+<body>
+    <header>
+        <!--High Score link & Timer-->
+        <div id="scores">
+            <!--High Score link-->
+            <p><a href="LINK HERE">View High Scores</a></p>
+        </div>
+        <div id="timer">
+            <!--Timer-->
+            <p>Time:</p>
+        </div>
+    </header>
+    <content>
+        <!--Pages-->
+        <section id="page0">
+            <!--Page 0-->
+            <h1>Coding Quiz</h1>
+            <p>Answer the questions before the timer runs out.<br>Wrong answers doc 10 seconds each, so watch out!</p>
+            <button id="start">Start Quiz</button>
+        </section>
+
+        <section id="page1">
+            <!--Page 1-->
+            <h2>Commonly used data types DO NOT include:</h2>
+            <div id="p1btns">
+                <!--Buttons-->
+                <button id="p1b1">1. strings</button>
+                <button id="p1b2">2. booleans</button>
+                <button id="p1b3">3. alerts</button>
+                <button id="p1b4">4. numbers</button>
+            </div>
+        </section>
+
+        <section id="page2">
+            <!--Page 2-->
+            <h2>The condition in an if / else statement is enclosed within _____.</h2>
+            <div id="p2btns">
+                <!--Buttons-->
+                <button id="p2b1">1. quotes</button>
+                <button id="p2b2">2. curly brackets</button>
+                <button id="p2b3">3. parantheses</button>
+                <button id="p2b4">4. square brackets</button>
+            </div>
+        </section>
+
+        <section id="page3">
+            <!--Page 3-->
+            <h2>Arrays in JavaScript can be used to store _____.</h2>
+            <div id="p3btns">
+                <!--Buttons-->
+                <button id="p3b1">1. number and strings</button>
+                <button id="p3b2">2. other arrays</button>
+                <button id="p3b3">3. booleans</button>
+                <button id="p3b4">4. all of the above</button>
+            </div>
+        </section>
+
+        <section id="page4">
+            <!--Page 4-->
+            <h2>String values must be enclosed within _____ when being assigned to variables.</h2>
+            <div id="p4btns">
+                <!--Buttons-->
+                <button id="p4b1">1. commas</button>
+                <button id="p4b2">2. curly brackets</button>
+                <button id="p4b3">3. quotes</button>
+                <button id="p4b4">4. parantheses</button>
+            </div>
+        </section>
+
+        <section id="page5">
+            <!--Page 5-->
+            <h2>A very useful tool used during development and debugging for printing content to the debugger is:</h2>
+            <div id="p5btns">
+                <!--Buttons-->
+                <button id="p5b1">1. JavaScript</button>
+                <button id="p5b2">2. terminal / bash</button>
+                <button id="p5b3">3. for loops</button>
+                <button id="p5b4">4. console.log</button>
+            </div>
+        </section>
+
+        <section id="pagef">
+            <!--Final Page-->
+            <h2>All done!</h2>
+            <p>Your final score is placeholder.</p>
+            <form id="initials">
+                <!--Form for entering your score and initials-->
+                <label for="textinput">Enter Initials:</label>
+                <input type="text" id="textinput" name="textinput"></input>
+                <input type="submit" id="submitbtn" value="Submit"></input>
+            </form>
+        </section>
+
+        <section id="pagehs">
+            <!--High Scores-->
+            <h2>High Scores</h2>
+            <div id="scorecontain">
+                <!--Container for high scores and hs buttons-->
+                <div id="scorelist">
+                    <!--List of high scores-->
+                    <p>Placeholder text</p>
+                </div>
+                <br>
+                <div id="scorebtns">
+                    <!--Go back and clear high scores buttons-->
+                    <button id="backbtn">Go Back</button>
+                    <button id="clearbtn">Clear High Scores</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <!--Correct/wrong notices-->
+            <p id="correct">Placeholder!</p>
+        </footer>
+    </content>
+</body>
+
+</html>
