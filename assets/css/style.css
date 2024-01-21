@@ -10,6 +10,11 @@
     --offwhite: #dae7e3;
 }
 
+::selection {
+    background: var(--highlight);
+    color: var(--white);
+}
+
 body {
     background-color: var(--offwhite);
     font-family: Arial, Helvetica, sans-serif;
@@ -55,10 +60,9 @@ h1 {
 
 button {
     margin: 5px;
-    padding: 7px;
+    padding: 10px;
     border-radius: 10px;
-    min-width: 10px;
-    max-width: 180px;
+    width: fit-content;
 
     font-size: 25px;
     background-color: var(--highlight);
