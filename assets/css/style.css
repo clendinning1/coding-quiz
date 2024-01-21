@@ -7,8 +7,11 @@
 :root {
     --highlight: #6600b9;
     --lighthl: #dbcbe6;
+
     --white: #fff;
     --offwhite: #f9f1ff;
+
+    --lighttext: #5e5b5f;
 }
 
 ::selection {
@@ -105,5 +108,26 @@ div {
 /* high score page */
 
 #scorelist {
+    padding: 0px 10px 0px 10px;
+    line-height: 0px;
+    font-size: 25px;
     background-color: var(--lighthl);
+}
+
+#scorebtns {
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+/* footer (correct/wrong notices) */
+
+footer {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+footer p {
+    font-style: italic;
+    font-weight: light;
+    color: var(--lighttext);
 }
