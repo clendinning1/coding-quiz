@@ -18,9 +18,11 @@ body {
 
 
 
+
 /* header */
 
 header {   
+    /* highscore link and timer */
     display: flex;
     justify-content: space-between;
     margin: 0px 30px 0px 30px;
@@ -34,24 +36,31 @@ a {
 
 
 
+
 /* content */
 
-content {
+section {
+    /* each page's contents */
     display: flex;
     flex-flow: column wrap;
     align-content: center;
     align-items: center;
 }
 
+/* page 0 */
+
 h1 { 
-    font-size: 45px;
+    font-size: 50px;
 }
 
 button {
+    margin: 5px;
     padding: 7px;
     border-radius: 10px;
+    min-width: 10px;
+    max-width: 180px;
 
-    font-size: 30px;
+    font-size: 25px;
     background-color: var(--highlight);
     color: var(--white);
 }
@@ -59,4 +68,21 @@ button {
 button:hover {
     opacity: 0.7;
     cursor: pointer;
+}
+
+#start {
+    /* start button */
+    font-size: 30px;
+}
+
+/* page 1 */
+
+h2 {
+    font-size: 40px;
+}
+
+div {
+    display: flex;
+    flex-flow: column wrap;
+    
 }
