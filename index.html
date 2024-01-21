@@ -10,10 +10,10 @@
 
 <body>
     <header>
-        <!--Highscore link & Timer-->
+        <!--High Score link & Timer-->
         <div id="scores">
-            <!--Highscore link-->
-            <p><a href="LINK HERE">View Highscores</a></p>
+            <!--High Score link-->
+            <p><a href="LINK HERE">View High Scores</a></p>
         </div>
         <div id="timer">
             <!--Timer-->
@@ -32,7 +32,7 @@
         <section id="page1">
             <!--Page 1-->
             <h2>Commonly used data types DO NOT include:</h2>
-            <div id="p1butts">
+            <div id="p1btns">
                 <!--Buttons-->
                 <button id="p1b1">1. strings</button>
                 <button id="p1b2">2. booleans</button>
@@ -43,8 +43,8 @@
 
         <section id="page2">
             <!--Page 2-->
-            <h2>The condition in an if/else statement is enclosed within _____.</h2>
-            <div id="p2butts">
+            <h2>The condition in an if / else statement is enclosed within _____.</h2>
+            <div id="p2btns">
                 <!--Buttons-->
                 <button id="p2b1">1. quotes</button>
                 <button id="p2b2">2. curly brackets</button>
@@ -56,7 +56,7 @@
         <section id="page3">
             <!--Page 3-->
             <h2>Arrays in JavaScript can be used to store _____.</h2>
-            <div id="p3butts">
+            <div id="p3btns">
                 <!--Buttons-->
                 <button id="p3b1">1. number and strings</button>
                 <button id="p3b2">2. other arrays</button>
@@ -68,7 +68,7 @@
         <section id="page4">
             <!--Page 4-->
             <h2>String values must be enclosed within _____ when being assigned to variables.</h2>
-            <div id="p4butts">
+            <div id="p4btns">
                 <!--Buttons-->
                 <button id="p4b1">1. commas</button>
                 <button id="p4b2">2. curly brackets</button>
@@ -80,10 +80,10 @@
         <section id="page5">
             <!--Page 5-->
             <h2>A very useful tool used during development and debugging for printing content to the debugger is:</h2>
-            <div id="p5butts">
+            <div id="p5btns">
                 <!--Buttons-->
                 <button id="p5b1">1. JavaScript</button>
-                <button id="p5b2">2. terminal/bash</button>
+                <button id="p5b2">2. terminal / bash</button>
                 <button id="p5b3">3. for loops</button>
                 <button id="p5b4">4. console.log</button>
             </div>
@@ -91,12 +91,30 @@
 
         <section id="pagef">
             <!--Final Page-->
+            <h2>All done!</h2>
+            <p>Your final score is .</p>
+            <form id="initials">
+                <!--Form for entering your score and initials-->
+                <label for="textinput">Enter Initials:</label>
+                <input type="text" id="textinput" name="textinput"></input>
+                <input type="submit" id="submitbtn" value="Submit"></input>
+            </form>
         </section>
 
         <section id="hs">
             <!--High Scores-->
+            <h2>High Scores</h2>
+            <div id="scorelist">
+                <!--List of high scores-->
+                <p>Placeholder text</p>
+            </div>
+            <div id="hsbtns">
+                <!--Go back and clear high scores buttons-->
+                <button id="backbtn">Go Back</button>
+                <button id="clearbtn">Clear High Scores</button>
+            </div>
         </section>
-        
+
         <footer>
             <hr>
             <p id="correct">Correct!</p>

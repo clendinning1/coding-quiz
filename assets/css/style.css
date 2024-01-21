@@ -6,8 +6,9 @@
 
 :root {
     --highlight: #6600b9;
+    --lighthl: #dbcbe6;
     --white: #fff;
-    --offwhite: #dae7e3;
+    --offwhite: #f9f1ff;
 }
 
 ::selection {
@@ -27,7 +28,7 @@ body {
 /* header */
 
 header {   
-    /* highscore link and timer */
+    /* high score link and timer */
     display: flex;
     justify-content: space-between;
     margin: 0px 30px 0px 30px;
@@ -58,7 +59,7 @@ h1 {
     font-size: 60px;
 }
 
-button {
+button, #submitbtn {
     margin: 5px;
     padding: 10px;
     border-radius: 10px;
@@ -69,7 +70,7 @@ button {
     color: var(--white);
 }
 
-button:hover {
+button:hover, #submitbtn:hover {
     opacity: 0.7;
     cursor: pointer;
 }
@@ -79,7 +80,7 @@ button:hover {
     font-size: 30px;
 }
 
-/* page 1 */
+/* quiz pages */
 
 h2 {
     font-size: 40px;
@@ -88,5 +89,21 @@ h2 {
 div {
     display: flex;
     flex-flow: column wrap;
-    
+}
+
+/* final page */
+
+#textinput {
+    font-size: 27px;
+}
+
+#submitbtn {
+    padding: 6px;
+    font-size: 23px;
+}
+
+/* high score page */
+
+#scorelist {
+    background-color: var(--lighthl);
 }
