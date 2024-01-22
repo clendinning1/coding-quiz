@@ -11,7 +11,9 @@
 //      c. the high score page should display them in a numbered list from
 //         highest to lowest
 //      d. the clear high scores button should clear the cache or whatev
-
+// 6. if time, DRY up the variables and functions.
+//      a. for loops?
+//      b. can you add DOM selectors to an array? i haven't been able to.
 
 
 
