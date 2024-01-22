@@ -1,11 +1,10 @@
 // TO DO!!
 // 3. set up timer:
-//      a. should start on the start quiz button and end after clicking
-//         a button on page 5
-//      b. should doc 10 secs for every wrong answer (set booleans for each
-//         quiz button?)
-//      c. if the timer runs out you're booted to the final page
+//      b. should doc 10 secs for every wrong answer
 //      d. remaining time is the score
+//      e. entering the "view high scores" page (or the final page tbh)
+//         should stop/reset the timer
+//      f. fix the bug of it showing up a second late
 // 4. set up scorekeeping:
 //      a. grab the initials and pair them with their score
 //      b. keep a running list in local storage
@@ -89,20 +88,19 @@ var timer = document.getElementById('timer');
 //}
 
 // this function gets called when the start button is pressed
+var timeLeft = 75; // Start at 75
 function countdown () {
-    var timeLeft = 75; // Start at 75
     var timerScore = setInterval(function () {
         if (timeLeft >= 1) { // As long as the num is greater than or equal to one:
             timer.textContent = "Time: " + timeLeft; // Display the remaining seconds
             timeLeft --; // Decrement by 1
         } else {
             timer.textContent = "Time: 0";
+            document.getElementById("span").textContent = timeLeft;
             clearInterval(timerScore);
             pagefSwitch();
         }
     }, 1000, "additional arguments after the timer expires");
-
-    document.getElementById("span").textContent = "Your score is " + timeLeft + ".";
 }
 
 
@@ -156,6 +154,8 @@ function pagefSwitch() {
     document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "flex";
     document.getElementById("pagehs").style.display = "none";
+    // stops the timer
+    // code here
 }
 
 function pagehsSwitch() {
@@ -168,6 +168,8 @@ function pagehsSwitch() {
     document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "none";
     document.getElementById("pagehs").style.display = "flex";
+    // stops the timer
+    // code here
 }
 
 function page0Back() {
