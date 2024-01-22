@@ -13,9 +13,6 @@
 //         highest to lowest
 //      d. the clear high scores button should clear the cache or whatev
 // 5. set up messages:
-//      a. a correct!/wrong! message should pop up every time a quiz button is
-//         clicked
-//      b. display for a second or two, and then fade until the next click
 //      c. what if you click through really fast? make sure it deletes the
 //         prev message before displaying another.
 
@@ -123,7 +120,7 @@ function page0Back() {
 
 
 
-// 2. CORRECT/WRONG MESSAGES
+// 2. CORRECT/INCORRECT MESSAGES
 
 // varries:
 // DOM locations
@@ -217,6 +214,10 @@ function badMsg() {
     incorrectMsg.style.display = "flex";
     delay(500).then(() => incorrectMsg.style.display = "none");
 }
+
+
+
+
 
 
 
