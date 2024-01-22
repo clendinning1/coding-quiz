@@ -1,8 +1,4 @@
 // TO DO!!
-// 2. set up links for:
-//      a. high score header
-//      b. start quiz button
-//      d. go back button
 // 3. set up timer:
 //      a. should start on the start quiz button and end after clicking
 //         a button on page 5
