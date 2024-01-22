@@ -40,7 +40,8 @@ a:hover {
 #page5,
 #pagef,
 #pagehs,
-#correct {
+#correctmsg,
+#incorrectmsg {
     display: none;
 }
 
@@ -49,7 +50,7 @@ a:hover {
 
 /* header */
 
-header {   
+header {
     /* high score link and timer */
     display: flex;
     justify-content: space-between;
@@ -77,11 +78,12 @@ section {
 
 /* page 0 */
 
-h1 { 
+h1 {
     font-size: 60px;
 }
 
-button, #submitbtn {
+button,
+#submitbtn {
     margin: 5px;
     padding: 10px;
     border-radius: 10px;
@@ -92,7 +94,8 @@ button, #submitbtn {
     color: var(--white);
 }
 
-button:hover, #submitbtn:hover {
+button:hover,
+#submitbtn:hover {
     opacity: 0.7;
     cursor: pointer;
 }
@@ -143,6 +146,7 @@ div {
 footer {
     display: flex;
     flex-flow: column wrap;
+    align-content: center;
 }
 
 footer p {
