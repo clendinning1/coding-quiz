@@ -127,36 +127,96 @@ function page0Back() {
 
 // varries:
 // DOM locations
-var wrongAns = document.getElementById("wrongans");
-var rightAns = document.getElementById("rightans");
-
-var correctMsg = document.getElementById("correct");
+var correctMsg = document.getElementById("correctmsg");
 var incorrectMsg = document.getElementById("incorrectmsg");
 
-// button onclicks (when clicked, run functions):
-wrongAns.addEventListener("click", badMsg);
-rightAns.addEventListener("click", goodMsg);
-
-// functions for the onclicks (displaying and hiding pages):
+// delay funct setup:
 
 function delay(time) {
     // sets up the delay
     return new Promise(resolve => setTimeout(resolve, time));
 }
 
-function badMsg() {
-    // make incorrectMsg appear, then disappear after a time
-    incorrectMsg.style.display = "flex";
-    delay(2000).then(() => incorrectMsg.style.display = "none");
-}
+// right
+var p1right = document.getElementById("p1right"); // locate button
+p1right.addEventListener("click", goodMsg); // onclick, button runs goodMsg function
 
+var p2right = document.getElementById("p2right");
+p2right.addEventListener("click", goodMsg);
+
+var p3right = document.getElementById("p3right");
+p3right.addEventListener("click", goodMsg);
+
+var p4right = document.getElementById("p4right");
+p4right.addEventListener("click", goodMsg);
+
+var p5right = document.getElementById("p5right");
+p5right.addEventListener("click", goodMsg);
+
+// right funct
 function goodMsg() {
     // make correctMsg briefly appear
     correctMsg.style.display = "flex";
-    // delay(2000).then(() => correctMsg.style.display = "none");
+    delay(500).then(() => correctMsg.style.display = "none");
 }
 
+// wrong
+// page 1
+var p1wrong0 = document.getElementById("p1wrong0"); // locates button
+p1wrong0.addEventListener("click", badMsg); // onclick, button runs badMsg function
 
+var p1wrong1 = document.getElementById("p1wrong1");
+p1wrong1.addEventListener("click", badMsg);
+
+var p1wrong2 = document.getElementById("p1wrong2");
+p1wrong2.addEventListener("click", badMsg);
+
+// page 2
+var p2wrong0 = document.getElementById("p2wrong0");
+p2wrong0.addEventListener("click", badMsg);
+
+var p2wrong1 = document.getElementById("p2wrong1");
+p2wrong1.addEventListener("click", badMsg);
+
+var p2wrong2 = document.getElementById("p2wrong2");
+p2wrong2.addEventListener("click", badMsg);
+
+// page 3
+var p3wrong0 = document.getElementById("p3wrong0");
+p3wrong0.addEventListener("click", badMsg);
+
+var p3wrong1 = document.getElementById("p3wrong1");
+p3wrong1.addEventListener("click", badMsg);
+
+var p3wrong2 = document.getElementById("p3wrong2");
+p3wrong2.addEventListener("click", badMsg);
+
+// page 4
+var p4wrong0 = document.getElementById("p4wrong0");
+p4wrong0.addEventListener("click", badMsg);
+
+var p4wrong1 = document.getElementById("p4wrong1");
+p4wrong1.addEventListener("click", badMsg);
+
+var p4wrong2 = document.getElementById("p4wrong2");
+p4wrong2.addEventListener("click", badMsg);
+
+// page 5
+var p5wrong0 = document.getElementById("p5wrong0");
+p5wrong0.addEventListener("click", badMsg);
+
+var p5wrong1 = document.getElementById("p5wrong1");
+p5wrong1.addEventListener("click", badMsg);
+
+var p5wrong2 = document.getElementById("p5wrong2");
+p5wrong2.addEventListener("click", badMsg);
+
+// wrong funct
+function badMsg() {
+    // make incorrectMsg appear, then disappear after a time
+    incorrectMsg.style.display = "flex";
+    delay(500).then(() => incorrectMsg.style.display = "none");
+}
 
 
 
