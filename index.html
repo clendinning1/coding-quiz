@@ -13,11 +13,10 @@
         <!--High Score link & Timer-->
         <div id="scores">
             <!--High Score link-->
-            <p><a href="LINK HERE">View High Scores</a></p>
+            <p><a>View High Scores</a></p>
         </div>
         <div id="timer">
             <!--Timer-->
-            <p>Time:</p>
         </div>
     </header>
     <content>
@@ -93,7 +92,7 @@
             <!--Final Page-->
             <h2>All done!</h2>
             <p>Your final score is placeholder.</p>
-            <form id="initials">
+            <form id="initials" onsubmit="return false">
                 <!--Form for entering your score and initials-->
                 <label for="textinput">Enter Initials:</label>
                 <input type="text" id="textinput" name="textinput"></input>
@@ -124,6 +123,7 @@
             <p id="correct">Placeholder!</p>
         </footer>
     </content>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
