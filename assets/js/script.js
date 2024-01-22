@@ -39,12 +39,14 @@ var correct = document.getElementById("correct"); // content in the footer (corr
 
 // button DOM locations
 var start = document.getElementById("start");
+var scoresBtn = document.getElementById("scoresbtn")
 var p1Btns = document.getElementById("p1btns");
 var p2Btns = document.getElementById("p2btns");
 var p3Btns = document.getElementById("p3btns");
 var p4Btns = document.getElementById("p4btns");
 var p5Btns = document.getElementById("p5btns");
 var submit = document.getElementById("submitbtn");
+var backBtn = document.getElementById("backbtn");
 
 
 
@@ -54,16 +56,14 @@ var submit = document.getElementById("submitbtn");
 
 // button functionality
 start.addEventListener("click", page1Start);
+scoresBtn.addEventListener("click", pagehsSwitch);
 p1Btns.addEventListener("click", page2Switch);
 p2Btns.addEventListener("click", page3Switch);
 p3Btns.addEventListener("click", page4Switch);
 p4Btns.addEventListener("click", page5Switch);
 p5Btns.addEventListener("click", pagefSwitch);
 submit.addEventListener("click", pagehsSwitch);
-
-// test
-// submit.addEventListener("click", function(){ console.log("workang??"); });
-
+backBtn.addEventListener("click", page0Back);
 
 
 // functions for the buttons
@@ -105,9 +105,21 @@ function pagefSwitch () {
 }
 
 function pagehsSwitch () {
-    // removes final page, displays hs page
+    // removes current page, displays hs page
+    document.getElementById("page0").style.display = "none";
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "none";
+    document.getElementById("page3").style.display = "none";
+    document.getElementById("page4").style.display = "none";
+    document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "none";
     document.getElementById("pagehs").style.display = "flex";
+}
+
+function page0Back() {
+    // removes current page, displays hs page
+    document.getElementById("pagehs").style.display = "none";
+    document.getElementById("page0").style.display = "flex";
 }
 
 

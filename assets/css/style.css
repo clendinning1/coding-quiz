@@ -25,6 +25,10 @@ body {
     font-size: 30px;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 
 
 
