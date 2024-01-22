@@ -20,7 +20,11 @@
 //         prev message before displaying another.
 
 
-// VARRIES !!
+
+// 1. APPEARIFYING SECTIONS
+
+// varries:
+
 // DOM locations
 var page0 = document.getElementById("page0");
 var page1 = document.getElementById("page1");
@@ -45,12 +49,8 @@ var submit = document.getElementById("submitbtn");
 var backBtn = document.getElementById("backbtn");
 
 
+// button onclicks (when clicked, run functions):
 
-
-
-// APPEARIFYING SECTIONS
-
-// button functionality
 start.addEventListener("click", page1Start);
 scoresBtn.addEventListener("click", pagehsSwitch);
 p1Btns.addEventListener("click", page2Switch);
@@ -61,46 +61,45 @@ p5Btns.addEventListener("click", pagefSwitch);
 submit.addEventListener("click", pagehsSwitch);
 backBtn.addEventListener("click", page0Back);
 
+// functions for the onclicks (displaying and hiding pages):
 
-// functions for the buttons
-
-function page1Start () {
+function page1Start() {
     // removes page 0, displays page 1
     document.getElementById("page0").style.display = "none";
     document.getElementById("page1").style.display = "flex";
 }
 
-function page2Switch () {
+function page2Switch() {
     // removes page 1, displays page 2
     document.getElementById("page1").style.display = "none";
     document.getElementById("page2").style.display = "flex";
 }
 
-function page3Switch () {
+function page3Switch() {
     // removes page 2, displays page 3
     document.getElementById("page2").style.display = "none";
     document.getElementById("page3").style.display = "flex";
 }
 
-function page4Switch () {
+function page4Switch() {
     // removes page 3, displays page 4
     document.getElementById("page3").style.display = "none";
     document.getElementById("page4").style.display = "flex";
 }
 
-function page5Switch () {
+function page5Switch() {
     // removes page 4, displays page 5
     document.getElementById("page4").style.display = "none";
     document.getElementById("page5").style.display = "flex";
 }
 
-function pagefSwitch () {
+function pagefSwitch() {
     // removes page 5, displays final page
     document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "flex";
 }
 
-function pagehsSwitch () {
+function pagehsSwitch() {
     // removes current page, displays hs page
     document.getElementById("page0").style.display = "none";
     document.getElementById("page1").style.display = "none";
@@ -121,7 +120,49 @@ function page0Back() {
 
 
 
+
+
+
+// 2. CORRECT/WRONG MESSAGES
+
+// varries:
+// DOM locations
+var wrongAns = document.getElementById("wrongans");
+var rightAns = document.getElementById("rightans");
+
+var correctMsg = document.getElementById("correct");
+var incorrectMsg = document.getElementById("incorrectmsg");
+
+// button onclicks (when clicked, run functions):
+wrongAns.addEventListener("click", badMsg);
+rightAns.addEventListener("click", goodMsg);
+
+// functions for the onclicks (displaying and hiding pages):
+
+function delay(time) {
+    // sets up the delay
+    return new Promise(resolve => setTimeout(resolve, time));
+}
+
+function badMsg() {
+    // make incorrectMsg appear, then disappear after a time
+    incorrectMsg.style.display = "flex";
+    delay(2000).then(() => incorrectMsg.style.display = "none");
+}
+
+function goodMsg() {
+    // make correctMsg briefly appear
+    correctMsg.style.display = "flex";
+    // delay(2000).then(() => correctMsg.style.display = "none");
+}
+
+
+
+
+
 // TIMER
+
+// varries
 var timer = document.getElementById('timer');
 
 // Timer that counts down from 75

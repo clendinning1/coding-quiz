@@ -40,7 +40,8 @@ a:hover {
 #page5,
 #pagef,
 #pagehs,
-#correct {
+#correctmsg,
+#incorrectmsg {
     display: none;
 }
 
