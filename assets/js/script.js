@@ -15,9 +15,11 @@
 
 
 
-// 1. APPEARIFYING SECTIONS
 
-// varries:
+
+// 0. APPEARIFYING SECTIONS PART I
+
+// some varries:
 
 // DOM locations
 var page0 = document.getElementById("page0");
@@ -55,12 +57,69 @@ p5Btns.addEventListener("click", pagefSwitch);
 submit.addEventListener("click", pagehsSwitch);
 backBtn.addEventListener("click", page0Back);
 
+
+
+
+
+
+// 1. TIMER
+
+var timer = document.getElementById('timer');
+
+//function countdown() {
+//    var timeLeft = 75;
+
+    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+ //   var timeInterval = setInterval(function () {
+//        // As long as the `timeLeft` is greater than 1
+//        if (timeLeft > 1) {
+            // Set the `textContent` of `timer` to show the remaining seconds
+ //           timer.textContent = "Time: " + timeLeft;
+            // Decrement `timeLeft` by 1
+ //           timeLeft--;
+//        } else {
+            // Once `timeLeft` gets to 0, set it to 0
+//            timer.textContent = '0';
+            // Use `clearInterval()` to stop the timer
+ //           clearInterval(timeInterval);
+            // Call the `displayMessage()` function
+//            displayMessage();
+//        }
+//    }, 1000);
+//}
+
+// this function gets called when the start button is pressed
+function countdown () {
+    var timeLeft = 75; // Start at 75
+    var timerScore = setInterval(function () {
+        if (timeLeft >= 1) { // As long as the num is greater than or equal to one:
+            timer.textContent = "Time: " + timeLeft; // Display the remaining seconds
+            timeLeft --; // Decrement by 1
+        } else {
+            timer.textContent = "Time: 0";
+            clearInterval(timerScore);
+            pagefSwitch();
+        }
+    }, 1000, "additional arguments after the timer expires");
+
+    document.getElementById("span").textContent = "Your score is " + timeLeft + ".";
+}
+
+
+
+
+
+
+// 2. APPEARIFYING SECTIONS PART II
+
 // functions for the onclicks (displaying and hiding pages):
 
 function page1Start() {
     // removes page 0, displays page 1
     document.getElementById("page0").style.display = "none";
     document.getElementById("page1").style.display = "flex";
+    // runs countdown funct from timer
+    countdown();
 }
 
 function page2Switch() {
@@ -88,9 +147,15 @@ function page5Switch() {
 }
 
 function pagefSwitch() {
-    // removes page 5, displays final page
+    // removes current page, displays final page
+    document.getElementById("page0").style.display = "none";
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "none";
+    document.getElementById("page3").style.display = "none";
+    document.getElementById("page4").style.display = "none";
     document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "flex";
+    document.getElementById("pagehs").style.display = "none";
 }
 
 function pagehsSwitch() {
@@ -117,7 +182,7 @@ function page0Back() {
 
 
 
-// 2. CORRECT/INCORRECT MESSAGES
+// 3. CORRECT/INCORRECT MESSAGES
 
 // varries:
 // DOM locations
@@ -211,43 +276,3 @@ function badMsg() {
     incorrectMsg.style.display = "flex";
     delay(1000).then(() => incorrectMsg.style.display = "none");
 }
-
-
-
-
-
-
-
-// TIMER
-
-// varries
-var timer = document.getElementById('timer');
-
-// Timer that counts down from 75
-function countdown() {
-    var timeLeft = 75;
-
-    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function () {
-        // As long as the `timeLeft` is greater than 1
-        if (timeLeft > 1) {
-            // Set the `textContent` of `timer` to show the remaining seconds
-            timer.textContent = "Time: " + timeLeft;
-            // Decrement `timeLeft` by 1
-            timeLeft--;
-        } else if (timeLeft === 1) {
-            // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-            timer.textContent = "Time: " + timeLeft;
-            timeLeft--;
-        } else {
-            // Once `timeLeft` gets to 0, set `timer` to an empty string
-            timer.textContent = '';
-            // Use `clearInterval()` to stop the timer
-            clearInterval(timeInterval);
-            // Call the `displayMessage()` function
-            displayMessage();
-        }
-    }, 1000);
-}
-
-countdown();
