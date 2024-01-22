@@ -12,9 +12,6 @@
 //      c. the high score page should display them in a numbered list from
 //         highest to lowest
 //      d. the clear high scores button should clear the cache or whatev
-// 5. set up messages:
-//      c. what if you click through really fast? make sure it deletes the
-//         prev message before displaying another.
 
 
 
@@ -154,7 +151,7 @@ p5right.addEventListener("click", goodMsg);
 function goodMsg() {
     // make correctMsg briefly appear
     correctMsg.style.display = "flex";
-    delay(500).then(() => correctMsg.style.display = "none");
+    delay(1000).then(() => correctMsg.style.display = "none");
 }
 
 // wrong
@@ -212,7 +209,7 @@ p5wrong2.addEventListener("click", badMsg);
 function badMsg() {
     // make incorrectMsg appear, then disappear after a time
     incorrectMsg.style.display = "flex";
-    delay(500).then(() => incorrectMsg.style.display = "none");
+    delay(1000).then(() => incorrectMsg.style.display = "none");
 }
 
 
