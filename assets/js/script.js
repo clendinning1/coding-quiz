@@ -1,9 +1,7 @@
 // TO DO!!
 // 3. set up timer:
-//      d. remaining time is the score
 //      f. fix the bug of it showing up a second late
-//      h. timer should reset to zero when you move back to the start page
-//      i. timer should start up again when you hit the start button for a second time
+//      i. 
 // 4. set up scorekeeping:
 //      a. grab the initials and pair them with their score
 //      b. keep a running list in local storage
@@ -86,27 +84,35 @@ function quizEnd() {
     quizStatus = false;
 }
 
+function resetTimer() {
+    // this runs when you return to the start page (page 0)
+    timeLeft = 75; // sets time back to full
+    timer.textContent = ""; // removes timer text from the top
+    quizStatus = true; // allows the if statement to start over
+}
+
 function countdown () {
     // called when you hit the start button!
     var timerScore = setInterval(function () {
         if ((timeLeft >= 1) && (quizStatus === true)) { 
-            // As long as the num is greater than or equal to one AND the quiz is running
+            // As long as the timer is >= 1 secs AND the quiz is running
             timer.textContent = "Time: " + timeLeft + " (if)"; // Display the remaining seconds
             timeLeft --; // Decrement by 1
         } else if ((timeLeft >= 1) && (quizStatus === false)) {
-            // The num is greater than or equal to one BUT the quiz is finished
+            // The timer is >= 1 secs BUT the quiz is finished
             timer.textContent = "Time: " + timeLeft + " (else if)";
+            document.getElementById("span").textContent = timeLeft; // tells the player their score
             clearInterval(timerScore);
             return;
         } else {
-            // if the timer runs out (num is not >= 1)
+            // The timer ran out (num is not >= 1)
             timer.textContent = "Time: " + timeLeft + " (else)";
-            // document.getElementById("span").textContent = timeLeft; // i think this is broken
+            document.getElementById("span").textContent = timeLeft; // tells the player their score
             clearInterval(timerScore);
             pagefSwitch(); // boots you to the final page
             return;
         }
-    }, 1000, "additional arguments after the timer expires");
+    }, 1000);
 }
 
 // why doesn't the timer run again when you click the button?
@@ -182,6 +188,8 @@ function page0Back() {
     // removes current page, displays hs page
     document.getElementById("pagehs").style.display = "none";
     document.getElementById("page0").style.display = "flex";
+    // resets the timer
+    resetTimer();
 }
 
 
