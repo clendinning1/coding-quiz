@@ -84,14 +84,14 @@ function resetTimer() {
     finalScore = 0;
 }
 
-function countdown () {
+function countdown() {
     // called when you hit the start button!
     timer.textContent = "Time: " + " 76";
     var timerScore = setInterval(function () {
-        if ((timeLeft >= 1) && (quizStatus === true)) { 
+        if ((timeLeft >= 1) && (quizStatus === true)) {
             // As long as the timer is >= 1 secs AND the quiz is running
             timer.textContent = "Time: " + timeLeft; // Display the remaining seconds
-            timeLeft --; // Decrement by 1
+            timeLeft--; // Decrement by 1
         } else if ((timeLeft >= 1) && (quizStatus === false)) {
             // The timer is >= 1 secs BUT the quiz is finished
             timer.textContent = "Time: " + timeLeft;
@@ -297,8 +297,6 @@ function badMsg() {
 
 
 // 4. SCOREKEEPING
-var scoreSpan = document.getElementById("scorespan");
-var textinput = localStorage.getItem("textinput");
 
 function submitBtnFunct() {
     // grab initials
@@ -306,18 +304,26 @@ function submitBtnFunct() {
 
     // put initials and score into local storage
     localStorage.setItem(playerInitials, finalScore);
-    
+
     // move to high score page
     pagehsSwitch();
 }
 
-function displayScores () {
+var scoreSpan = document.getElementById("scorespan");
+function displayScores() {
     var storedScores
+    // for loop below borrowed and modified from stack overflow link in readme.
     for (i = 1; i < localStorage.length; i++) {
-        // borrowed and modified from stack overflow link in readme
-        storedScores = document.createElement("p");
+        // starting at one; running as long as i < the storage length; increasing by one each time the code is executed
+
+        storedScores = document.createElement("p"); // ss creates a paragraph element
         storedScores.innerText = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
-        scoreSpan.appendChild(storedScores);
+        // text in the p element = "i. key - value" for each iteration.
+        scoreSpan.appendChild(storedScores); // attaches ss to the scorespan id in the html
+
+        return;
+
+        // right now it isn't working for some reason!
     }
 }
 
@@ -326,7 +332,7 @@ function displayScores () {
 
 var clearBtn = document.getElementById("clearbtn");
 clearBtn.addEventListener("click", clearBtnFunct);
-function clearBtnFunct () {
+function clearBtnFunct() {
     localStorage.clear();
-    // delete the new divs
+    // delete the storesScores content?
 }
