@@ -1,10 +1,9 @@
 // TO DO!!
 // 3. set up timer:
 //      d. remaining time is the score
-//      e. entering the "view high scores" page (or the final page tbh)
-//         should stop/reset the timer
 //      f. fix the bug of it showing up a second late
-//      h. should restart if the start quiz button is hit
+//      h. timer should reset to zero when you move back to the start page
+//      i. timer should start up again when you hit the start button for a second time
 // 4. set up scorekeeping:
 //      a. grab the initials and pair them with their score
 //      b. keep a running list in local storage
@@ -68,28 +67,6 @@ backBtn.addEventListener("click", page0Back);
 
 var timer = document.getElementById('timer');
 
-//function countdown() {
-//    var timeLeft = 75;
-
-    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
- //   var timeInterval = setInterval(function () {
-//        // As long as the `timeLeft` is greater than 1
-//        if (timeLeft > 1) {
-            // Set the `textContent` of `timer` to show the remaining seconds
- //           timer.textContent = "Time: " + timeLeft;
-            // Decrement `timeLeft` by 1
- //           timeLeft--;
-//        } else {
-            // Once `timeLeft` gets to 0, set it to 0
-//            timer.textContent = '0';
-            // Use `clearInterval()` to stop the timer
- //           clearInterval(timeInterval);
-            // Call the `displayMessage()` function
-//            displayMessage();
-//        }
-//    }, 1000);
-//}
-
 // this function gets called when the start button is pressed
 var timeLeft = 75; // Start at 75
 
@@ -110,6 +87,7 @@ function quizEnd() {
 }
 
 function countdown () {
+    // called when you hit the start button!
     var timerScore = setInterval(function () {
         if ((timeLeft >= 1) && (quizStatus === true)) { 
             // As long as the num is greater than or equal to one AND the quiz is running
