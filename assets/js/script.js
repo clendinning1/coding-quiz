@@ -1,16 +1,3 @@
-// TO DO!!
-// 4. set up scorekeeping:
-//      c. the high score page should display them in a numbered list from
-//         highest to lowest
-//      d. the clear high scores button should clear the cache or whatev
-// 6. if time, DRY up the variables and functions.
-//      a. for loops?
-//      b. can you add DOM selectors to an array? i haven't been able to.
-//      c. can you use classes instead of IDs for just a "right" and "wrong"
-//         instead of applying the code to each individual id?
-
-
-
 // 0. APPEARIFYING SECTIONS PART I
 
 // some varries:
@@ -303,13 +290,6 @@ function badMsg() {
 
 
 
-
-
-
-// 3. display the local storage as a numbered list
-// 4. clear highscores button deletes it all
-
-
 // 4. SCOREKEEPING
 var scoreSpan = document.getElementById("scorespan");
 var textinput = localStorage.getItem("textinput");
@@ -320,7 +300,6 @@ function submitBtnFunct() {
 
     // put initials and score into local storage
     localStorage.setItem(playerInitials, finalScore);
-    console.log(window.localStorage);
     
     // move to high score page
     pagehsSwitch();
@@ -333,16 +312,21 @@ function displayScores () {
         storedScores = document.createElement("p");
         storedScores.innerText = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
         scoreSpan.appendChild(storedScores);
-        console.log(storedScores);
+        console.log(storedScores.innerText);
     }
 }
+
+// when you enter a new set of initials it doesn't immediately update?
+// when you delete the local storage it doesn't immediately update?
 
 displayScores();
 
 
 // clear button function
-//function clearBtnFunct () {
-//    document.getElementById("clearbtn").addEventListener("click", localStorage.clear());
-//}
 
-//clearBtnFunct();
+var clearBtn = document.getElementById("clearbtn");
+clearBtn.addEventListener("click", clearBtnFunct);
+function clearBtnFunct () {
+    localStorage.clear();
+    console.log(localStorage);
+}
