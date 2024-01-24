@@ -37,7 +37,7 @@ var p2Btns = document.getElementById("p2btns");
 var p3Btns = document.getElementById("p3btns");
 var p4Btns = document.getElementById("p4btns");
 var p5Btns = document.getElementById("p5btns");
-var submit = document.getElementById("submitbtn");
+var submitBtn = document.getElementById("submitbtn");
 var backBtn = document.getElementById("backbtn");
 
 
@@ -50,7 +50,7 @@ p2Btns.addEventListener("click", page3Switch);
 p3Btns.addEventListener("click", page4Switch);
 p4Btns.addEventListener("click", page5Switch);
 p5Btns.addEventListener("click", pagefSwitch);
-submit.addEventListener("click", pagehsSwitch);
+submitBtn.addEventListener("click", submitBtnFunct);
 backBtn.addEventListener("click", page0Back);
 
 
@@ -307,7 +307,7 @@ function badMsg() {
 
 
 
-
+// 0. save input to playerInitials variable
 // 1. grab the initals and pair them with their score into a keyvalue pair
 // 2. save it into the local storage
 // 3. display the local storage as a numbered list from highest score to lowest
@@ -315,9 +315,16 @@ function badMsg() {
 
 
 // 4. SCOREKEEPING
-
+var scoreSpan = document.getElementById("scorespan");
 
 // playerInitials = initials entered in the form
 // finalScore = their score ^^^^
 
+var textinput = localStorage.getItem("textinput");
 
+function submitBtnFunct() {
+    // do shit
+    
+    // move to high score page
+    pagehsSwitch();
+}
