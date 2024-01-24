@@ -333,6 +333,7 @@ function displayScores () {
         storedScores = document.createElement("p");
         storedScores.innerText = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
         scoreSpan.appendChild(storedScores);
+        console.log(storedScores);
     }
 }
 
