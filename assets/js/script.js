@@ -1,7 +1,5 @@
 // TO DO!!
 // 4. set up scorekeeping:
-//      a. grab the initials and pair them with their score
-//      b. keep a running list in local storage
 //      c. the high score page should display them in a numbered list from
 //         highest to lowest
 //      d. the clear high scores button should clear the cache or whatev
@@ -307,7 +305,7 @@ function badMsg() {
 
 
 
-// 0. save input to playerInitials variable
+
 // 1. grab the initals and pair them with their score into a keyvalue pair
 // 2. save it into the local storage
 // 3. display the local storage as a numbered list from highest score to lowest
@@ -316,10 +314,6 @@ function badMsg() {
 
 // 4. SCOREKEEPING
 var scoreSpan = document.getElementById("scorespan");
-
-// playerInitials = initials entered in the form
-// finalScore = their score ^^^^
-
 var textinput = localStorage.getItem("textinput");
 
 function submitBtnFunct() {
