@@ -1,23 +1,21 @@
 // TO DO!!
-// 3. set up timer:
-//      a. should start on the start quiz button and end after clicking
-//         a button on page 5
-//      b. should doc 10 secs for every wrong answer (set booleans for each
-//         quiz button?)
-//      c. if the timer runs out you're booted to the final page
-//      d. remaining time is the score
 // 4. set up scorekeeping:
 //      a. grab the initials and pair them with their score
 //      b. keep a running list in local storage
 //      c. the high score page should display them in a numbered list from
 //         highest to lowest
 //      d. the clear high scores button should clear the cache or whatev
+// 6. if time, DRY up the variables and functions.
+//      a. for loops?
+//      b. can you add DOM selectors to an array? i haven't been able to.
+//      c. can you use classes instead of IDs for just a "right" and "wrong"
+//         instead of applying the code to each individual id?
 
 
 
-// 1. APPEARIFYING SECTIONS
+// 0. APPEARIFYING SECTIONS PART I
 
-// varries:
+// some varries:
 
 // DOM locations
 var page0 = document.getElementById("page0");
@@ -55,12 +53,80 @@ p5Btns.addEventListener("click", pagefSwitch);
 submit.addEventListener("click", pagehsSwitch);
 backBtn.addEventListener("click", page0Back);
 
+
+
+
+
+
+// 1. TIMER
+
+var timer = document.getElementById('timer');
+
+// this function gets called when the start button is pressed
+var timeLeft = 75; // Start at 75
+
+// function to make the timer doc points. gets called in the badmsg funct
+function timeDecrease() {
+    timeLeft -= 10;
+    if (timeLeft < 0) {
+        timeLeft = 0;
+    }
+}
+
+// as long as quizStatus is true, the timer will run.
+// the quizEnd funct is called in the functs pagefSwitch and pagehsSwitch. (aka, it runs when moving to the final or hs pages.)
+// when it runs, quizEnd turns quizStatus to false, telling the timer to stop.
+var quizStatus = true;
+function quizEnd() {
+    quizStatus = false;
+}
+
+function resetTimer() {
+    // this runs when you return to the start page (page 0)
+    timeLeft = 75; // sets time back to full
+    timer.textContent = ""; // removes timer text from the top
+    quizStatus = true; // allows the if statement to start over
+}
+
+function countdown () {
+    // called when you hit the start button!
+    timer.textContent = "Time: " + " 76";
+    var timerScore = setInterval(function () {
+        if ((timeLeft >= 1) && (quizStatus === true)) { 
+            // As long as the timer is >= 1 secs AND the quiz is running
+            timer.textContent = "Time: " + timeLeft; // Display the remaining seconds
+            timeLeft --; // Decrement by 1
+        } else if ((timeLeft >= 1) && (quizStatus === false)) {
+            // The timer is >= 1 secs BUT the quiz is finished
+            timer.textContent = "Time: " + timeLeft;
+            document.getElementById("span").textContent = timeLeft; // tells the player their score
+            clearInterval(timerScore);
+            return;
+        } else {
+            // The timer ran out (num is not >= 1)
+            timer.textContent = "Time: " + timeLeft;
+            document.getElementById("span").textContent = timeLeft; // tells the player their score
+            clearInterval(timerScore);
+            pagefSwitch(); // boots you to the final page
+            return;
+        }
+    }, 1000);
+}
+
+
+
+
+
+// 2. APPEARIFYING SECTIONS PART II
+
 // functions for the onclicks (displaying and hiding pages):
 
 function page1Start() {
     // removes page 0, displays page 1
     document.getElementById("page0").style.display = "none";
     document.getElementById("page1").style.display = "flex";
+    // runs countdown funct from timer
+    countdown();
 }
 
 function page2Switch() {
@@ -88,9 +154,17 @@ function page5Switch() {
 }
 
 function pagefSwitch() {
-    // removes page 5, displays final page
+    // removes current page, displays final page
+    document.getElementById("page0").style.display = "none";
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "none";
+    document.getElementById("page3").style.display = "none";
+    document.getElementById("page4").style.display = "none";
     document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "flex";
+    document.getElementById("pagehs").style.display = "none";
+    // stops the timer
+    quizEnd();
 }
 
 function pagehsSwitch() {
@@ -103,12 +177,16 @@ function pagehsSwitch() {
     document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "none";
     document.getElementById("pagehs").style.display = "flex";
+    // stops the timer
+    quizEnd();
 }
 
 function page0Back() {
     // removes current page, displays hs page
     document.getElementById("pagehs").style.display = "none";
     document.getElementById("page0").style.display = "flex";
+    // resets the timer
+    resetTimer();
 }
 
 
@@ -117,7 +195,7 @@ function page0Back() {
 
 
 
-// 2. CORRECT/INCORRECT MESSAGES
+// 3. CORRECT/INCORRECT MESSAGES
 
 // varries:
 // DOM locations
@@ -210,44 +288,6 @@ function badMsg() {
     // make incorrectMsg appear, then disappear after a time
     incorrectMsg.style.display = "flex";
     delay(1000).then(() => incorrectMsg.style.display = "none");
+    // subtracts 10 from the timer by calling this funct:
+    timeDecrease();
 }
-
-
-
-
-
-
-
-// TIMER
-
-// varries
-var timer = document.getElementById('timer');
-
-// Timer that counts down from 75
-function countdown() {
-    var timeLeft = 75;
-
-    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function () {
-        // As long as the `timeLeft` is greater than 1
-        if (timeLeft > 1) {
-            // Set the `textContent` of `timer` to show the remaining seconds
-            timer.textContent = "Time: " + timeLeft;
-            // Decrement `timeLeft` by 1
-            timeLeft--;
-        } else if (timeLeft === 1) {
-            // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-            timer.textContent = "Time: " + timeLeft;
-            timeLeft--;
-        } else {
-            // Once `timeLeft` gets to 0, set `timer` to an empty string
-            timer.textContent = '';
-            // Use `clearInterval()` to stop the timer
-            clearInterval(timeInterval);
-            // Call the `displayMessage()` function
-            displayMessage();
-        }
-    }, 1000);
-}
-
-countdown();
