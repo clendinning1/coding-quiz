@@ -306,9 +306,7 @@ function badMsg() {
 
 
 
-// 1. grab the initals and pair them with their score into a keyvalue pair
-// 2. save it into the local storage
-// 3. display the local storage as a numbered list from highest score to lowest
+// 3. display the local storage as a numbered list
 // 4. clear highscores button deletes it all
 
 
@@ -328,6 +326,22 @@ function submitBtnFunct() {
     pagehsSwitch();
 }
 
+function displayScores () {
+    var storedScores
+    for (i = 0; i < localStorage.length; i++) {
+        // borrowed and modified from stack overflow link in readme
+        storedScores = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
+        console.log(storedScores);
+        scoreSpan.textContent = storedScores;
+    }
+}
+
+displayScores();
 
 
-// document.getElementById("clearbtn").addEventListener("click", localStorage.clear());
+// clear button function
+//function clearBtnFunct () {
+//    document.getElementById("clearbtn").addEventListener("click", localStorage.clear());
+//}
+
+//clearBtnFunct();

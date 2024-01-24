@@ -1,4 +1,4 @@
-# coding-quiz
+-# coding-quiz
 # Coding Quiz
 ## Description & Usage
 ## Website Preview
@@ -9,3 +9,4 @@
 - [MDN](https://developer.mozilla.org/en-US/)
 - [W3](https://www.w3schools.com/)
 - https://masteringjs.io/tutorials/fundamentals/wait-1-second-then
+- https://stackoverflow.com/questions/5410820/how-can-i-show-all-the-localstorage-saved-variables
