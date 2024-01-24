@@ -4,7 +4,6 @@
 //      e. entering the "view high scores" page (or the final page tbh)
 //         should stop/reset the timer
 //      f. fix the bug of it showing up a second late
-//      g. should stop when the quiz is finished
 //      h. should restart if the start quiz button is hit
 // 4. set up scorekeeping:
 //      a. grab the initials and pair them with their score
@@ -102,12 +101,11 @@ function timeDecrease() {
     }
 }
 
-// how do i determine what page we're on??? do i do it based off of what function has been executed?? no, how about onclick...?
-// put those specific onclicks into a function ....??
-// onclick of w/x/y/z means var === true. if var === true, run code?
+// as long as quizStatus is true, the timer will run.
+// the quizEnd funct is called in the functs pagefSwitch and pagehsSwitch. (aka, it runs when moving to the final or hs pages.)
+// when it runs, quizEnd turns quizStatus to false, telling the timer to stop.
 var quizStatus = true;
-
-function testing() {
+function quizEnd() {
     quizStatus = false;
 }
 
@@ -121,15 +119,21 @@ function countdown () {
             // The num is greater than or equal to one BUT the quiz is finished
             timer.textContent = "Time: " + timeLeft + " (else if)";
             clearInterval(timerScore);
+            return;
         } else {
+            // if the timer runs out (num is not >= 1)
             timer.textContent = "Time: " + timeLeft + " (else)";
             // document.getElementById("span").textContent = timeLeft; // i think this is broken
             clearInterval(timerScore);
             pagefSwitch(); // boots you to the final page
+            return;
         }
     }, 1000, "additional arguments after the timer expires");
 }
 
+// why doesn't the timer run again when you click the button?
+// how to get it to reset when you move to the start page?
+// the mockup says timer: 0 on the start page, so maybe its at their else?
 
 
 // 2. APPEARIFYING SECTIONS PART II
@@ -179,7 +183,7 @@ function pagefSwitch() {
     document.getElementById("pagef").style.display = "flex";
     document.getElementById("pagehs").style.display = "none";
     // stops the timer
-    // code here
+    quizEnd();
 }
 
 function pagehsSwitch() {
@@ -193,7 +197,7 @@ function pagehsSwitch() {
     document.getElementById("pagef").style.display = "none";
     document.getElementById("pagehs").style.display = "flex";
     // stops the timer
-    // code here
+    quizEnd();
 }
 
 function page0Back() {
@@ -236,20 +240,13 @@ var p4right = document.getElementById("p4right");
 p4right.addEventListener("click", goodMsg);
 
 var p5right = document.getElementById("p5right");
-p5right.addEventListener("click", goodMsgFinal);
+p5right.addEventListener("click", goodMsg);
 
 // right funct
 function goodMsg() {
     // make correctMsg briefly appear
     correctMsg.style.display = "flex";
     delay(1000).then(() => correctMsg.style.display = "none");
-}
-
-function goodMsgFinal() {
-    // make correctMsg briefly appear AND end the quiz
-    correctMsg.style.display = "flex";
-    delay(1000).then(() => correctMsg.style.display = "none");
-    testing();
 }
 
 // wrong
@@ -295,13 +292,13 @@ p4wrong2.addEventListener("click", badMsg);
 
 // page 5
 var p5wrong0 = document.getElementById("p5wrong0");
-p5wrong0.addEventListener("click", badMsgFinal);
+p5wrong0.addEventListener("click", badMsg);
 
 var p5wrong1 = document.getElementById("p5wrong1");
-p5wrong1.addEventListener("click", badMsgFinal);
+p5wrong1.addEventListener("click", badMsg);
 
 var p5wrong2 = document.getElementById("p5wrong2");
-p5wrong2.addEventListener("click", badMsgFinal);
+p5wrong2.addEventListener("click", badMsg);
 
 // wrong funct
 function badMsg() {
@@ -310,13 +307,4 @@ function badMsg() {
     delay(1000).then(() => incorrectMsg.style.display = "none");
     // subtracts 10 from the timer by calling this funct:
     timeDecrease();
-}
-
-function badMsgFinal() {
-    // make incorrectMsg appear, then disappear after a time, AND end the quiz
-    incorrectMsg.style.display = "flex";
-    delay(1000).then(() => incorrectMsg.style.display = "none");
-    // subtracts 10 from the timer by calling this funct:
-    timeDecrease();
-    testing();
 }
