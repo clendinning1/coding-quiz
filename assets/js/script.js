@@ -325,22 +325,14 @@ var textinput = localStorage.getItem("textinput");
 function submitBtnFunct() {
     // grab initials
     playerInitials = document.getElementById("initials")[0].value;
-    console.log(playerInitials);
 
-    // grab score
-    console.log(finalScore);
-
-    // put both into local storage
+    // put initials and score into local storage
     localStorage.setItem(playerInitials, finalScore);
-
-
-    // test its working
+    console.log(window.localStorage);
     
     // move to high score page
     pagehsSwitch();
 }
-
-
 
 
 
