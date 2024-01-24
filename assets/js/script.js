@@ -1,7 +1,4 @@
 // TO DO!!
-// 3. set up timer:
-//      f. fix the bug of it showing up a second late
-//      i. 
 // 4. set up scorekeeping:
 //      a. grab the initials and pair them with their score
 //      b. keep a running list in local storage
@@ -93,20 +90,21 @@ function resetTimer() {
 
 function countdown () {
     // called when you hit the start button!
+    timer.textContent = "Time: " + " 76";
     var timerScore = setInterval(function () {
         if ((timeLeft >= 1) && (quizStatus === true)) { 
             // As long as the timer is >= 1 secs AND the quiz is running
-            timer.textContent = "Time: " + timeLeft + " (if)"; // Display the remaining seconds
+            timer.textContent = "Time: " + timeLeft; // Display the remaining seconds
             timeLeft --; // Decrement by 1
         } else if ((timeLeft >= 1) && (quizStatus === false)) {
             // The timer is >= 1 secs BUT the quiz is finished
-            timer.textContent = "Time: " + timeLeft + " (else if)";
+            timer.textContent = "Time: " + timeLeft;
             document.getElementById("span").textContent = timeLeft; // tells the player their score
             clearInterval(timerScore);
             return;
         } else {
             // The timer ran out (num is not >= 1)
-            timer.textContent = "Time: " + timeLeft + " (else)";
+            timer.textContent = "Time: " + timeLeft;
             document.getElementById("span").textContent = timeLeft; // tells the player their score
             clearInterval(timerScore);
             pagefSwitch(); // boots you to the final page
@@ -115,9 +113,8 @@ function countdown () {
     }, 1000);
 }
 
-// why doesn't the timer run again when you click the button?
-// how to get it to reset when you move to the start page?
-// the mockup says timer: 0 on the start page, so maybe its at their else?
+
+
 
 
 // 2. APPEARIFYING SECTIONS PART II
