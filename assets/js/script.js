@@ -331,8 +331,8 @@ function displayScores () {
     for (i = 1; i < localStorage.length; i++) {
         // borrowed and modified from stack overflow link in readme
         storedScores = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
-        scoreSpan.textContent = storedScores;
         console.log(storedScores);
+        // instead of using a preset div, make one here?
     }
 }
 
