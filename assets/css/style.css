@@ -130,6 +130,7 @@ div {
 /* high score page */
 
 #scorelist {
+    margin: 0px;
     padding: 0px 10px 0px 10px;
     line-height: 0px;
     font-size: 25px;
@@ -138,6 +139,9 @@ div {
 
 #scorespan {
     display: flex;
+    flex-flow: column wrap;
+    margin: 0px;
+    padding: 0px 10px 0px 10px;
 }
 
 #scorebtns {
