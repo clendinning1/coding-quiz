@@ -5,6 +5,7 @@
 //      e. entering the "view high scores" page (or the final page tbh)
 //         should stop/reset the timer
 //      f. fix the bug of it showing up a second late
+//      g. should stop when the quiz is finished
 // 4. set up scorekeeping:
 //      a. grab the initials and pair them with their score
 //      b. keep a running list in local storage
@@ -91,6 +92,15 @@ var timer = document.getElementById('timer');
 
 // this function gets called when the start button is pressed
 var timeLeft = 75; // Start at 75
+
+// function to make the timer doc 
+function timeDecrease() {
+    timeLeft -= 10;
+    if (timeLeft < 0) {
+        timeLeft = 0;
+    }
+}
+
 function countdown () {
     var timerScore = setInterval(function () {
         if (timeLeft >= 1) { // As long as the num is greater than or equal to one:
@@ -279,4 +289,6 @@ function badMsg() {
     // make incorrectMsg appear, then disappear after a time
     incorrectMsg.style.display = "flex";
     delay(1000).then(() => incorrectMsg.style.display = "none");
+    // subtracts 10 from the timer by calling this funct:
+    timeDecrease();
 }
