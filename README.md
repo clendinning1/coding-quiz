@@ -1,10 +1,10 @@
--# coding-quiz
 # Coding Quiz
 ## Description & Usage
+A website for quizzing your coding knowledge that keeps track of your scores.
 ## Website Preview
 - Website Link: 
 - Repository Link: https://github.com/clendinning1/coding-quiz
-![Image of the deployed website.](./assets/images/)
+![Image of the deployed website.](./assets/images/siteprev.JPG)
 ## Sources
 - [MDN](https://developer.mozilla.org/en-US/)
 - [W3](https://www.w3schools.com/)
