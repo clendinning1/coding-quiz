@@ -1,3 +1,9 @@
+// bugs
+// i think you can click to the next page without choosing a specific button
+// high score page isnt updating automatically
+// its tweaking actually. giving me 1 1 2???
+
+
 // 0. APPEARIFYING SECTIONS PART I
 
 // some varries:
@@ -312,14 +318,8 @@ function displayScores () {
         storedScores = document.createElement("p");
         storedScores.innerText = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
         scoreSpan.appendChild(storedScores);
-        console.log(storedScores.innerText);
     }
 }
-
-// when you enter a new set of initials it doesn't immediately update?
-// when you delete the local storage it doesn't immediately update?
-
-displayScores();
 
 
 // clear button function
@@ -328,5 +328,5 @@ var clearBtn = document.getElementById("clearbtn");
 clearBtn.addEventListener("click", clearBtnFunct);
 function clearBtnFunct () {
     localStorage.clear();
-    console.log(localStorage);
+    // delete the new divs
 }
