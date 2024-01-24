@@ -291,3 +291,11 @@ function badMsg() {
     // subtracts 10 from the timer by calling this funct:
     timeDecrease();
 }
+
+
+
+
+
+
+
+// 4. SCOREKEEPING
