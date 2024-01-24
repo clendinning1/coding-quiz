@@ -1,11 +1,11 @@
 // TO DO!!
 // 3. set up timer:
-//      b. should doc 10 secs for every wrong answer
 //      d. remaining time is the score
 //      e. entering the "view high scores" page (or the final page tbh)
 //         should stop/reset the timer
 //      f. fix the bug of it showing up a second late
 //      g. should stop when the quiz is finished
+//      h. should restart if the start quiz button is hit
 // 4. set up scorekeeping:
 //      a. grab the initials and pair them with their score
 //      b. keep a running list in local storage
@@ -15,7 +15,8 @@
 // 6. if time, DRY up the variables and functions.
 //      a. for loops?
 //      b. can you add DOM selectors to an array? i haven't been able to.
-
+//      c. can you use classes instead of IDs for just a "right" and "wrong"
+//         instead of applying the code to each individual id?
 
 
 
@@ -93,7 +94,7 @@ var timer = document.getElementById('timer');
 // this function gets called when the start button is pressed
 var timeLeft = 75; // Start at 75
 
-// function to make the timer doc 
+// function to make the timer doc points. gets called in the badmsg funct
 function timeDecrease() {
     timeLeft -= 10;
     if (timeLeft < 0) {
@@ -101,22 +102,33 @@ function timeDecrease() {
     }
 }
 
+// how do i determine what page we're on??? do i do it based off of what function has been executed?? no, how about onclick...?
+// put those specific onclicks into a function ....??
+// onclick of w/x/y/z means var === true. if var === true, run code?
+var quizStatus = true;
+
+function testing() {
+    quizStatus = false;
+}
+
 function countdown () {
     var timerScore = setInterval(function () {
-        if (timeLeft >= 1) { // As long as the num is greater than or equal to one:
-            timer.textContent = "Time: " + timeLeft; // Display the remaining seconds
+        if ((timeLeft >= 1) && (quizStatus === true)) { 
+            // As long as the num is greater than or equal to one AND the quiz is running
+            timer.textContent = "Time: " + timeLeft + " (if)"; // Display the remaining seconds
             timeLeft --; // Decrement by 1
-        } else {
-            timer.textContent = "Time: 0";
-            document.getElementById("span").textContent = timeLeft;
+        } else if ((timeLeft >= 1) && (quizStatus === false)) {
+            // The num is greater than or equal to one BUT the quiz is finished
+            timer.textContent = "Time: " + timeLeft + " (else if)";
             clearInterval(timerScore);
-            pagefSwitch();
+        } else {
+            timer.textContent = "Time: " + timeLeft + " (else)";
+            // document.getElementById("span").textContent = timeLeft; // i think this is broken
+            clearInterval(timerScore);
+            pagefSwitch(); // boots you to the final page
         }
     }, 1000, "additional arguments after the timer expires");
 }
-
-
-
 
 
 
@@ -224,13 +236,20 @@ var p4right = document.getElementById("p4right");
 p4right.addEventListener("click", goodMsg);
 
 var p5right = document.getElementById("p5right");
-p5right.addEventListener("click", goodMsg);
+p5right.addEventListener("click", goodMsgFinal);
 
 // right funct
 function goodMsg() {
     // make correctMsg briefly appear
     correctMsg.style.display = "flex";
     delay(1000).then(() => correctMsg.style.display = "none");
+}
+
+function goodMsgFinal() {
+    // make correctMsg briefly appear AND end the quiz
+    correctMsg.style.display = "flex";
+    delay(1000).then(() => correctMsg.style.display = "none");
+    testing();
 }
 
 // wrong
@@ -276,13 +295,13 @@ p4wrong2.addEventListener("click", badMsg);
 
 // page 5
 var p5wrong0 = document.getElementById("p5wrong0");
-p5wrong0.addEventListener("click", badMsg);
+p5wrong0.addEventListener("click", badMsgFinal);
 
 var p5wrong1 = document.getElementById("p5wrong1");
-p5wrong1.addEventListener("click", badMsg);
+p5wrong1.addEventListener("click", badMsgFinal);
 
 var p5wrong2 = document.getElementById("p5wrong2");
-p5wrong2.addEventListener("click", badMsg);
+p5wrong2.addEventListener("click", badMsgFinal);
 
 // wrong funct
 function badMsg() {
@@ -291,4 +310,13 @@ function badMsg() {
     delay(1000).then(() => incorrectMsg.style.display = "none");
     // subtracts 10 from the timer by calling this funct:
     timeDecrease();
+}
+
+function badMsgFinal() {
+    // make incorrectMsg appear, then disappear after a time, AND end the quiz
+    incorrectMsg.style.display = "flex";
+    delay(1000).then(() => incorrectMsg.style.display = "none");
+    // subtracts 10 from the timer by calling this funct:
+    timeDecrease();
+    testing();
 }
