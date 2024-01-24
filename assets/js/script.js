@@ -81,11 +81,16 @@ function quizEnd() {
     quizStatus = false;
 }
 
+var playerInitials = "N/A"; // player initials at the end
+var finalScore = 0; // grabs their score at the end
+
 function resetTimer() {
     // this runs when you return to the start page (page 0)
     timeLeft = 75; // sets time back to full
     timer.textContent = ""; // removes timer text from the top
     quizStatus = true; // allows the if statement to start over
+    playerInitials = "N/A";
+    finalScore = 0;
 }
 
 function countdown () {
@@ -100,12 +105,14 @@ function countdown () {
             // The timer is >= 1 secs BUT the quiz is finished
             timer.textContent = "Time: " + timeLeft;
             document.getElementById("span").textContent = timeLeft; // tells the player their score
+            finalScore = timeLeft; // puts their score into the finalScore var
             clearInterval(timerScore);
             return;
         } else {
             // The timer ran out (num is not >= 1)
             timer.textContent = "Time: " + timeLeft;
             document.getElementById("span").textContent = timeLeft; // tells the player their score
+            finalScore = timeLeft; // puts their score into the finalScore var
             clearInterval(timerScore);
             pagefSwitch(); // boots you to the final page
             return;
@@ -298,4 +305,19 @@ function badMsg() {
 
 
 
+
+
+
+// 1. grab the initals and pair them with their score into a keyvalue pair
+// 2. save it into the local storage
+// 3. display the local storage as a numbered list from highest score to lowest
+// 4. clear highscores button deletes it all
+
+
 // 4. SCOREKEEPING
+
+
+// playerInitials = initials entered in the form
+// finalScore = their score ^^^^
+
+
