@@ -136,6 +136,10 @@ div {
     background-color: var(--lighthl);
 }
 
+#scorespan {
+    display: flex;
+}
+
 #scorebtns {
     flex-flow: row wrap;
     justify-content: space-between;

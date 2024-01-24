@@ -328,11 +328,11 @@ function submitBtnFunct() {
 
 function displayScores () {
     var storedScores
-    for (i = 0; i < localStorage.length; i++) {
+    for (i = 1; i < localStorage.length; i++) {
         // borrowed and modified from stack overflow link in readme
         storedScores = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
-        console.log(storedScores);
         scoreSpan.textContent = storedScores;
+        console.log(storedScores);
     }
 }
 
