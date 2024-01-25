@@ -2,7 +2,7 @@
 ## Description & Usage
 A website for quizzing your coding knowledge that keeps track of your scores.
 ## Website Preview
-- Website Link: 
+- Website Link: https://clendinning1.github.io/coding-quiz/
 - Repository Link: https://github.com/clendinning1/coding-quiz
 ![Image of the deployed website.](./assets/images/siteprev.JPG)
 ## Sources
