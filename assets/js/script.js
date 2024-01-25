@@ -2,6 +2,12 @@
 
 // some varries:
 
+// right now the page changes if i click on the div containing all the
+// buttons rather than each individual button.
+// which functions are handling that again?
+// ahhh its the p1Btns, p2Btns, etc. 
+// im just gonna do it the brute force ugly way bc im tired.
+
 // DOM locations
 var page0 = document.getElementById("page0");
 var page1 = document.getElementById("page1");
@@ -16,12 +22,7 @@ var correct = document.getElementById("correct"); // content in the footer (corr
 
 // button DOM locations
 var start = document.getElementById("start");
-var scoresBtn = document.getElementById("scoresbtn")
-var p1Btns = document.getElementById("p1btns");
-var p2Btns = document.getElementById("p2btns");
-var p3Btns = document.getElementById("p3btns");
-var p4Btns = document.getElementById("p4btns");
-var p5Btns = document.getElementById("p5btns");
+var scoresBtn = document.getElementById("scoresbtn");
 var submitBtn = document.getElementById("submitbtn");
 var backBtn = document.getElementById("backbtn");
 
@@ -30,17 +31,8 @@ var backBtn = document.getElementById("backbtn");
 
 start.addEventListener("click", page1Start);
 scoresBtn.addEventListener("click", pagehsSwitch);
-p1Btns.addEventListener("click", page2Switch);
-p2Btns.addEventListener("click", page3Switch);
-p3Btns.addEventListener("click", page4Switch);
-p4Btns.addEventListener("click", page5Switch);
-p5Btns.addEventListener("click", pagefSwitch);
 submitBtn.addEventListener("click", submitBtnFunct);
 backBtn.addEventListener("click", page0Back);
-
-
-
-
 
 
 // 1. TIMER
@@ -211,79 +203,140 @@ function delay(time) {
 
 // right
 var p1right = document.getElementById("p1right"); // locate button
-p1right.addEventListener("click", goodMsg); // onclick, button runs goodMsg function
+p1right.addEventListener("click", rightP1); // onclick, button runs goodMsg function
 
 var p2right = document.getElementById("p2right");
-p2right.addEventListener("click", goodMsg);
+p2right.addEventListener("click", rightP2);
 
 var p3right = document.getElementById("p3right");
-p3right.addEventListener("click", goodMsg);
+p3right.addEventListener("click", rightP3);
 
 var p4right = document.getElementById("p4right");
-p4right.addEventListener("click", goodMsg);
+p4right.addEventListener("click", rightP4);
 
 var p5right = document.getElementById("p5right");
-p5right.addEventListener("click", goodMsg);
+p5right.addEventListener("click", rightP5);
 
-// right funct
+// right functs page 1
+function rightP1() {
+    goodMsg();
+    page2Switch();
+}
+
+// right functs page 2
+function rightP2() {
+    goodMsg();
+    page3Switch();
+}
+
+// right functs page 3
+function rightP3() {
+    goodMsg();
+    page4Switch();
+}
+
+// right functs page 4
+function rightP4() {
+    goodMsg();
+    page5Switch();
+}
+
+// right functs page 5
+function rightP5() {
+    goodMsg();
+    pagefSwitch();
+}
+
+// right funct (all)
 function goodMsg() {
     // make correctMsg briefly appear
     correctMsg.style.display = "flex";
     delay(1000).then(() => correctMsg.style.display = "none");
 }
 
+
 // wrong
 // page 1
 var p1wrong0 = document.getElementById("p1wrong0"); // locates button
-p1wrong0.addEventListener("click", badMsg); // onclick, button runs badMsg function
+p1wrong0.addEventListener("click", wrongP1); // onclick, button runs badMsg function
 
 var p1wrong1 = document.getElementById("p1wrong1");
-p1wrong1.addEventListener("click", badMsg);
+p1wrong1.addEventListener("click", wrongP1);
 
 var p1wrong2 = document.getElementById("p1wrong2");
-p1wrong2.addEventListener("click", badMsg);
+p1wrong2.addEventListener("click", wrongP1);
 
 // page 2
 var p2wrong0 = document.getElementById("p2wrong0");
-p2wrong0.addEventListener("click", badMsg);
+p2wrong0.addEventListener("click", wrongP2);
 
 var p2wrong1 = document.getElementById("p2wrong1");
-p2wrong1.addEventListener("click", badMsg);
+p2wrong1.addEventListener("click", wrongP2);
 
 var p2wrong2 = document.getElementById("p2wrong2");
-p2wrong2.addEventListener("click", badMsg);
+p2wrong2.addEventListener("click", wrongP2);
 
 // page 3
 var p3wrong0 = document.getElementById("p3wrong0");
-p3wrong0.addEventListener("click", badMsg);
+p3wrong0.addEventListener("click", wrongP3);
 
 var p3wrong1 = document.getElementById("p3wrong1");
-p3wrong1.addEventListener("click", badMsg);
+p3wrong1.addEventListener("click", wrongP3);
 
 var p3wrong2 = document.getElementById("p3wrong2");
-p3wrong2.addEventListener("click", badMsg);
+p3wrong2.addEventListener("click", wrongP3);
 
 // page 4
 var p4wrong0 = document.getElementById("p4wrong0");
-p4wrong0.addEventListener("click", badMsg);
+p4wrong0.addEventListener("click", wrongP4);
 
 var p4wrong1 = document.getElementById("p4wrong1");
-p4wrong1.addEventListener("click", badMsg);
+p4wrong1.addEventListener("click", wrongP4);
 
 var p4wrong2 = document.getElementById("p4wrong2");
-p4wrong2.addEventListener("click", badMsg);
+p4wrong2.addEventListener("click", wrongP4);
 
 // page 5
 var p5wrong0 = document.getElementById("p5wrong0");
-p5wrong0.addEventListener("click", badMsg);
+p5wrong0.addEventListener("click", wrongP5);
 
 var p5wrong1 = document.getElementById("p5wrong1");
-p5wrong1.addEventListener("click", badMsg);
+p5wrong1.addEventListener("click", wrongP5);
 
 var p5wrong2 = document.getElementById("p5wrong2");
-p5wrong2.addEventListener("click", badMsg);
+p5wrong2.addEventListener("click", wrongP5);
 
-// wrong funct
+// wrong functs page 1
+function wrongP1() {
+    badMsg();
+    page2Switch();
+}
+
+// wrong functs page 2
+function wrongP2() {
+    badMsg();
+    page3Switch();
+}
+
+// wrong functs page 3
+function wrongP3() {
+    badMsg();
+    page4Switch();
+}
+
+// wrong functs page 4
+function wrongP4() {
+    badMsg();
+    page5Switch();
+}
+
+// wrong functs page 5
+function wrongP5() {
+    badMsg();
+    pagefSwitch();
+}
+
+// wrong functs (all)
 function badMsg() {
     // make incorrectMsg appear, then disappear after a time
     incorrectMsg.style.display = "flex";
