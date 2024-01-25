@@ -302,6 +302,7 @@ function badMsg() {
 
 let userinit = ["initials:"];
 let userscore = ["scores:"];
+let hasScores = false;
 
 function submitBtnFunct() {
     // grab initials
@@ -314,6 +315,9 @@ function submitBtnFunct() {
     // translate to string and add to local storage
     localStorage.setItem("userinit", JSON.stringify(userinit));
     localStorage.setItem("userscore", JSON.stringify(userscore));
+
+    // tell the prgrm we have data now
+    hasScores = true;
 
     // move to high score page
     pagehsSwitch();
@@ -333,13 +337,16 @@ function displayScores() {
     var parseinit = JSON.parse(grabinit);
     var parsescore = JSON.parse(grabscore);
 
-    // for loop modified from stack overflow link in readme.
-    for (let i = 1; i < parseinit.length; i++) {
-        // starting at one; running as long as i < the number of values in the array; increasing by one each time the code is executed
-        let storedScores = document.createElement("p"); // ss creates a paragraph element
-        storedScores.innerText = ([i] + ". " + parseinit[i] + " - " + parsescore[i]);
-        // text in the p element = "i. initials - score" for each iteration.
-        scoreSpan.appendChild(storedScores); // attaches ss to the scorespan id in the html
+    // if we have no data, don't run this code
+    if (hasScores === false) { } else {
+        // for loop modified from stack overflow link in readme.
+        for (let i = 1; i < parseinit.length; i++) {
+            // starting at one; running as long as i < the number of values in the array; increasing by one each time the code is executed
+            let storedScores = document.createElement("p"); // ss creates a paragraph element
+            storedScores.innerText = ([i] + ". " + parseinit[i] + " - " + parsescore[i]);
+            // text in the p element = "i. initials - score" for each iteration.
+            scoreSpan.appendChild(storedScores); // attaches ss to the scorespan id in the html
+        }
     }
 
 }
@@ -356,6 +363,9 @@ function clearBtnFunct() {
     // resets arrays
     userinit = ["initials:"];
     userscore = ["scores:"];
+
+    // tell the prgrm we got rid of the data
+    hasScores = false;
 
     // resets scoreboard
     scoreSpan.innerText = "";
