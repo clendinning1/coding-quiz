@@ -1,9 +1,3 @@
-// bugs
-// i think you can click to the next page without choosing a specific button
-// high score page isnt updating automatically
-// its tweaking actually. giving me 1 1 2???
-
-
 // 0. APPEARIFYING SECTIONS PART I
 
 // some varries:
@@ -165,7 +159,12 @@ function pagefSwitch() {
     quizEnd();
 }
 
+
+
 function pagehsSwitch() {
+    // sets up high scores list
+    displayScores();
+
     // removes current page, displays hs page
     document.getElementById("page0").style.display = "none";
     document.getElementById("page1").style.display = "none";
@@ -175,9 +174,12 @@ function pagehsSwitch() {
     document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "none";
     document.getElementById("pagehs").style.display = "flex";
+
     // stops the timer
     quizEnd();
 }
+
+
 
 function page0Back() {
     // removes current page, displays hs page
@@ -309,24 +311,27 @@ function submitBtnFunct() {
     pagehsSwitch();
 }
 
+// create one localstorage item as an array and access the array pts instead
+// stringify it to store it
+// i will access each bit of the array
+// accessing the obj thru the arrays name
+// array of objs, stringify the array, then parse it back.
+
 var scoreSpan = document.getElementById("scorespan");
 function displayScores() {
-    var storedScores
+    scoreSpan.innerText = "";
+    console.log("displaying scores...");
     // for loop below borrowed and modified from stack overflow link in readme.
-    for (i = 1; i < localStorage.length; i++) {
+    for (let i = 0; i < localStorage.length; i++) {
         // starting at one; running as long as i < the storage length; increasing by one each time the code is executed
-
-        storedScores = document.createElement("p"); // ss creates a paragraph element
+        let storedScores = document.createElement("p"); // ss creates a paragraph element
         storedScores.innerText = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
         // text in the p element = "i. key - value" for each iteration.
         scoreSpan.appendChild(storedScores); // attaches ss to the scorespan id in the html
 
         return;
-
-        // right now it isn't working for some reason!
     }
 }
-
 
 // clear button function
 
@@ -334,5 +339,4 @@ var clearBtn = document.getElementById("clearbtn");
 clearBtn.addEventListener("click", clearBtnFunct);
 function clearBtnFunct() {
     localStorage.clear();
-    // delete the storesScores content?
 }
