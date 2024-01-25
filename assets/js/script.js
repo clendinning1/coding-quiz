@@ -344,10 +344,19 @@ function displayScores() {
 
 }
 
+
 // clear button function
 
 var clearBtn = document.getElementById("clearbtn");
 clearBtn.addEventListener("click", clearBtnFunct);
 function clearBtnFunct() {
+    // clears storage
     localStorage.clear();
+
+    // resets arrays
+    userinit = ["initials:"];
+    userscore = ["scores:"];
+
+    // resets scoreboard
+    scoreSpan.innerText = "";
 }
