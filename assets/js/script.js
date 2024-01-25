@@ -1,18 +1,3 @@
-// TO DO!!
-// 4. set up scorekeeping:
-//      a. grab the initials and pair them with their score
-//      b. keep a running list in local storage
-//      c. the high score page should display them in a numbered list from
-//         highest to lowest
-//      d. the clear high scores button should clear the cache or whatev
-// 6. if time, DRY up the variables and functions.
-//      a. for loops?
-//      b. can you add DOM selectors to an array? i haven't been able to.
-//      c. can you use classes instead of IDs for just a "right" and "wrong"
-//         instead of applying the code to each individual id?
-
-
-
 // 0. APPEARIFYING SECTIONS PART I
 
 // some varries:
@@ -37,7 +22,7 @@ var p2Btns = document.getElementById("p2btns");
 var p3Btns = document.getElementById("p3btns");
 var p4Btns = document.getElementById("p4btns");
 var p5Btns = document.getElementById("p5btns");
-var submit = document.getElementById("submitbtn");
+var submitBtn = document.getElementById("submitbtn");
 var backBtn = document.getElementById("backbtn");
 
 
@@ -50,7 +35,7 @@ p2Btns.addEventListener("click", page3Switch);
 p3Btns.addEventListener("click", page4Switch);
 p4Btns.addEventListener("click", page5Switch);
 p5Btns.addEventListener("click", pagefSwitch);
-submit.addEventListener("click", pagehsSwitch);
+submitBtn.addEventListener("click", submitBtnFunct);
 backBtn.addEventListener("click", page0Back);
 
 
@@ -81,31 +66,38 @@ function quizEnd() {
     quizStatus = false;
 }
 
+var playerInitials = "N/A"; // player initials at the end
+var finalScore = 0; // grabs their score at the end
+
 function resetTimer() {
     // this runs when you return to the start page (page 0)
     timeLeft = 75; // sets time back to full
     timer.textContent = ""; // removes timer text from the top
     quizStatus = true; // allows the if statement to start over
+    playerInitials = "N/A";
+    finalScore = 0;
 }
 
-function countdown () {
+function countdown() {
     // called when you hit the start button!
     timer.textContent = "Time: " + " 76";
     var timerScore = setInterval(function () {
-        if ((timeLeft >= 1) && (quizStatus === true)) { 
+        if ((timeLeft >= 1) && (quizStatus === true)) {
             // As long as the timer is >= 1 secs AND the quiz is running
             timer.textContent = "Time: " + timeLeft; // Display the remaining seconds
-            timeLeft --; // Decrement by 1
+            timeLeft--; // Decrement by 1
         } else if ((timeLeft >= 1) && (quizStatus === false)) {
             // The timer is >= 1 secs BUT the quiz is finished
             timer.textContent = "Time: " + timeLeft;
             document.getElementById("span").textContent = timeLeft; // tells the player their score
+            finalScore = timeLeft; // puts their score into the finalScore var
             clearInterval(timerScore);
             return;
         } else {
             // The timer ran out (num is not >= 1)
             timer.textContent = "Time: " + timeLeft;
             document.getElementById("span").textContent = timeLeft; // tells the player their score
+            finalScore = timeLeft; // puts their score into the finalScore var
             clearInterval(timerScore);
             pagefSwitch(); // boots you to the final page
             return;
@@ -167,7 +159,12 @@ function pagefSwitch() {
     quizEnd();
 }
 
+
+
 function pagehsSwitch() {
+    // sets up high scores list
+    displayScores();
+
     // removes current page, displays hs page
     document.getElementById("page0").style.display = "none";
     document.getElementById("page1").style.display = "none";
@@ -177,9 +174,12 @@ function pagehsSwitch() {
     document.getElementById("page5").style.display = "none";
     document.getElementById("pagef").style.display = "none";
     document.getElementById("pagehs").style.display = "flex";
+
     // stops the timer
     quizEnd();
 }
+
+
 
 function page0Back() {
     // removes current page, displays hs page
@@ -290,4 +290,83 @@ function badMsg() {
     delay(1000).then(() => incorrectMsg.style.display = "none");
     // subtracts 10 from the timer by calling this funct:
     timeDecrease();
+}
+
+
+
+
+
+
+
+// 4. SCOREKEEPING
+
+let userinit = ["initials:"];
+let userscore = ["scores:"];
+let hasScores = false;
+
+function submitBtnFunct() {
+    // grab initials
+    let playerInitials = document.getElementById("initials")[0].value;
+
+    // adds initials and score to arrays
+    userinit.push(playerInitials);
+    userscore.push(finalScore);
+
+    // translate to string and add to local storage
+    localStorage.setItem("userinit", JSON.stringify(userinit));
+    localStorage.setItem("userscore", JSON.stringify(userscore));
+
+    // tell the prgrm we have data now
+    hasScores = true;
+
+    // move to high score page
+    pagehsSwitch();
+}
+
+
+let scoreSpan = document.getElementById("scorespan");
+function displayScores() {
+    // resetting scoreboard
+    scoreSpan.innerText = "";
+
+    // pull data from local storage
+    var grabinit = localStorage.getItem("userinit");
+    var grabscore = localStorage.getItem("userscore");
+
+    // parse it back into an array from a string
+    var parseinit = JSON.parse(grabinit);
+    var parsescore = JSON.parse(grabscore);
+
+    // if we have no data, don't run this code
+    if (hasScores === false) { } else {
+        // for loop modified from stack overflow link in readme.
+        for (let i = 1; i < parseinit.length; i++) {
+            // starting at one; running as long as i < the number of values in the array; increasing by one each time the code is executed
+            let storedScores = document.createElement("p"); // ss creates a paragraph element
+            storedScores.innerText = ([i] + ". " + parseinit[i] + " - " + parsescore[i]);
+            // text in the p element = "i. initials - score" for each iteration.
+            scoreSpan.appendChild(storedScores); // attaches ss to the scorespan id in the html
+        }
+    }
+
+}
+
+
+// clear button function
+
+var clearBtn = document.getElementById("clearbtn");
+clearBtn.addEventListener("click", clearBtnFunct);
+function clearBtnFunct() {
+    // clears storage
+    localStorage.clear();
+
+    // resets arrays
+    userinit = ["initials:"];
+    userscore = ["scores:"];
+
+    // tell the prgrm we got rid of the data
+    hasScores = false;
+
+    // resets scoreboard
+    scoreSpan.innerText = "";
 }
