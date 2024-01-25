@@ -340,8 +340,6 @@ function displayScores() {
         storedScores.innerText = ([i] + ". " + parseinit[i] + " - " + parsescore[i]);
         // text in the p element = "i. initials - score" for each iteration.
         scoreSpan.appendChild(storedScores); // attaches ss to the scorespan id in the html
-        
-        return;
     }
 
 }
