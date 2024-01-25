@@ -10,3 +10,4 @@ A website for quizzing your coding knowledge that keeps track of your scores.
 - [W3](https://www.w3schools.com/)
 - https://masteringjs.io/tutorials/fundamentals/wait-1-second-then
 - https://stackoverflow.com/questions/5410820/how-can-i-show-all-the-localstorage-saved-variables
+- https://www.w3docs.com/snippets/javascript/how-to-loop-through-an-array-in-javascript.html

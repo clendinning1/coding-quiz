@@ -300,37 +300,50 @@ function badMsg() {
 
 // 4. SCOREKEEPING
 
+let userinit = ["initials:"];
+let userscore = ["scores:"];
+
 function submitBtnFunct() {
     // grab initials
-    playerInitials = document.getElementById("initials")[0].value;
+    let playerInitials = document.getElementById("initials")[0].value;
 
-    // put initials and score into local storage
-    localStorage.setItem(playerInitials, finalScore);
+    // adds initials and score to arrays
+    userinit.push(playerInitials);
+    userscore.push(finalScore);
+
+    // translate to string and add to local storage
+    localStorage.setItem("userinit", JSON.stringify(userinit));
+    localStorage.setItem("userscore", JSON.stringify(userscore));
 
     // move to high score page
     pagehsSwitch();
 }
 
-// create one localstorage item as an array and access the array pts instead
-// stringify it to store it
-// i will access each bit of the array
-// accessing the obj thru the arrays name
-// array of objs, stringify the array, then parse it back.
 
-var scoreSpan = document.getElementById("scorespan");
+let scoreSpan = document.getElementById("scorespan");
 function displayScores() {
+    // resetting scoreboard
     scoreSpan.innerText = "";
-    console.log("displaying scores...");
-    // for loop below borrowed and modified from stack overflow link in readme.
-    for (let i = 0; i < localStorage.length; i++) {
-        // starting at one; running as long as i < the storage length; increasing by one each time the code is executed
-        let storedScores = document.createElement("p"); // ss creates a paragraph element
-        storedScores.innerText = (i + ". " + localStorage.key(i) + " - " + localStorage.getItem(localStorage.key(i)));
-        // text in the p element = "i. key - value" for each iteration.
-        scoreSpan.appendChild(storedScores); // attaches ss to the scorespan id in the html
 
+    // pull data from local storage
+    var grabinit = localStorage.getItem("userinit");
+    var grabscore = localStorage.getItem("userscore");
+
+    // parse it back into an array from a string
+    var parseinit = JSON.parse(grabinit);
+    var parsescore = JSON.parse(grabscore);
+
+    // for loop modified from stack overflow link in readme.
+    for (let i = 1; i < parseinit.length; i++) {
+        // starting at one; running as long as i < the number of values in the array; increasing by one each time the code is executed
+        let storedScores = document.createElement("p"); // ss creates a paragraph element
+        storedScores.innerText = ([i] + ". " + parseinit[i] + " - " + parsescore[i]);
+        // text in the p element = "i. initials - score" for each iteration.
+        scoreSpan.appendChild(storedScores); // attaches ss to the scorespan id in the html
+        
         return;
     }
+
 }
 
 // clear button function
